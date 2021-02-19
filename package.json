@@ -1,0 +1,25 @@
+{
+  "name": "electron_flash",
+  "version": "1.0.0",
+  "description": "Container para utilizar flash embarcado em um site",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "electron": "10.2.0",
+    "electron-builder": "^22.9.1"
+  },
+  "scripts": {
+    "start": "electron .",
+    "build32": "electron-builder --dir --windows --ia32",
+    "installer32": "electron-builder --windows --ia32",
+    "build64": "electron-builder --dir --windows --x64",
+    "installer64": "electron-builder --windows --x64"
+  },
+  "build": {
+    "extraFiles": "pepflashplayer.dll",
+    "directories": {
+      "buildResources": "./icon.ico"
+    }
+  }
+}
