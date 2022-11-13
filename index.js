@@ -1,4 +1,5 @@
 const { app, BrowserWindow, globalShortcut } = require("electron");
+const pathApp = './app'
 
 const createWindow = () => {
 	const mainWindow = new BrowserWindow(
@@ -9,14 +10,14 @@ const createWindow = () => {
 				webviewTag: true,
 				plugins: true
 			},
-			icon: './icon.ico',
+			icon: `${pathApp}/icon.ico`,
 			title: 'Container para utilizar flash embarcado em um site'
 		}
 	);
 
 	mainWindow.removeMenu();
 
-	mainWindow.loadFile('index.html');
+	mainWindow.loadFile(`${pathApp}/index.html`);
 
 	globalShortcut.register(
 		'F5',
@@ -26,7 +27,7 @@ const createWindow = () => {
 	);
 };
 
-app.commandLine.appendSwitch('ppapi-flash-path', 'pepflashplayer.dll');
+app.commandLine.appendSwitch('ppapi-flash-path', `${pathApp}/pepflashplayer.dll`);
 app.commandLine.appendSwitch('ppapi-flash-version', '29.0.0.171');
 
 app.whenReady().then(createWindow);
